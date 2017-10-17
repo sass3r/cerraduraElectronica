@@ -43,7 +43,8 @@ void loop(){
   if (status == MI_OK){
     Serial.println("Tarjeta RFID Detectada");
     //PROCEDEMOS A LEER EL CODIGO DE LA TARJETA
-    code_ide = myRFID.AddicoreRFID_Anticoll(str); 
+    code_ide = myRFID.AddicoreRFID_Anticoll(str);
+    // enviar port puerto serial el codigo para que se agrege a la base de datos 
     procesarCodigo(code_ide); // llamada a una funcion
   }
 }
