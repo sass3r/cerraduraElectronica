@@ -38,18 +38,21 @@ void loop(){
   unsigned char status;
   unsigned char str[MAX_LEN];
   String code_id = "";
+  String codigoDB =""; // variable para codigo de la base de datos
   str[1] = 0x4400;
   status = myRFID.AddicoreRFID_Request(PICC_REQIDL,str);
   if (status == MI_OK){
     Serial.println("Tarjeta RFID Detectada");
     //PROCEDEMOS A LEER EL CODIGO DE LA TARJETA
     code_ide = myRFID.AddicoreRFID_Anticoll(str);
-    // enviar port puerto serial el codigo para que se agrege a la base de datos 
-    procesarCodigo(code_ide); // llamada a una funcion
+    // comunicacion serial para obtener codigo de DB poner en una variable
+    if(!(valido(codigo,codigoBD))){
+	// enviar pulso de 220
+    }
   }
 }
 
-void procesarCodigo(String codigo){
+void procesarCodigo([]codigo ,String codigo){
    if(codigo =="10115522582"){
       Serial.print("Hola Ernesto");
    }
@@ -59,4 +62,15 @@ void procesarCodigo(String codigo){
    if(codigo =="11712417446"){
       Serial.print("Hola Rafo");
    }
+}
+
+boolean valido([]codigo ,String codigo){
+	boolean res = false;
+	for(int i = 0; i <codigo.length(); i++ ){
+		if(codigo[i] != codigo[i]){
+			res = true;
+			i = codigo.length();
+		}
+	}
+	return res;
 }
